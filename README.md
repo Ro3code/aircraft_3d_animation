@@ -5,4 +5,5 @@ A Matlab tool to visualize recorded or simulated flight data
 
 GIF example:
 ![alt text](https://cdn-images-1.medium.com/max/800/1*o3RwoxCISohtpXPXyZ4ZxQ.gif)
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+## aircraft_3d_animation
