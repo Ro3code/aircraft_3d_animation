@@ -5,7 +5,7 @@ close all;
 % https://es.mathworks.com/matlabcentral/fileexchange/51200-stltools
 addpath('./stlTools');
 % Set the name of the mat file containing all the info of the 3D model
-MatFileName = 'saab_gripen_3d_model.mat';
+MatFileName = 'SAAB_GRIPEN_MULTI_BODY.mat';
 % Define the list of parts which will be part of the rigid aircraft body
 rigid_body_list   = {     'Body.stl',   'AB_Left.stl',  'AB_Right.stl', 'Canopy_Front.stl', 'Canopy_Rear.stl'};
 % Define the color of each part
@@ -14,8 +14,20 @@ rigid_body_colors = {0.8 * [1, 1, 1], 0.6 * [1, 1, 1], 0.6 * [1, 1, 1],    0.1 *
 alphas            = [              1,               1,               1,                0.9,               0.9];
 % Define the model ofset to center the A/C Center of Gravity
 offset_3d_model   = [8678.85, -15.48, 606.68];
-
-% Construct the main body
+% Define the controls 
+ControlsFieldNames = {...
+'model'              'label',             'color',                             'rot_point',            'rot_vect', 'max_deflection'};
+Controls = {                                                                                                       
+'FP_Right.stl',       'FP_R',   0.3*[0.8, 0.8, 1], [5719,   996.6,  600.0]-offset_3d_model,            [0,  1, 0], [-30, +30];
+'FP_Left.stl',        'FP_L',   0.3*[0.8, 0.8, 1], [5719,  -996.6,  600.0]-offset_3d_model,            [0,  1, 0], [-30, +30];
+'LE_Left.stl',        'LE_L',   0.3*[0.8, 0.8, 1], [9267, -2493.0,  380.2]-offset_3d_model,  [0.7849, -0.6197, 0], [ -1, +30];
+'LE_right.stl',       'LE_R',   0.3*[0.8, 0.8, 1], [9267, +2493.0,  380.2]-offset_3d_model, [-0.7849, -0.7197, 0], [ -1, +30];
+'Rudder.stl',          'RUD',   0.3*[0.8, 0.8, 1], [12930,    0.0, 1387.0]-offset_3d_model,            [0, 0, -1], [-30, +30];
+'Elevon_Left.stl',  'FLAP_L',   0.3*[0.8, 0.8, 1], [11260, -860.9,  368.3]-offset_3d_model,  [+0.0034, 0.9999, 0], [-30, +30];
+'Elevon_Right.stl', 'FLAP_R',   0.3*[0.8, 0.8, 1], [11260, +860.9,  368.3]-offset_3d_model,  [-0.0034, 0.9999, 0], [-30, +30];
+};
+% Definition of the Model3D data structure
+% Rigid body parts
 for i = 1:length(rigid_body_list)
     Model3D.Aircraft(i).model = rigid_body_list{i};
     Model3D.Aircraft(i).color = rigid_body_colors{i};
@@ -24,20 +36,7 @@ for i = 1:length(rigid_body_list)
    [Model3D.Aircraft(i).stl_data.vertices, Model3D.Aircraft(i).stl_data.faces, ~, Model3D.Aircraft(i).label] = stlRead(rigid_body_list{i});
     Model3D.Aircraft(i).stl_data.vertices  = Model3D.Aircraft(i).stl_data.vertices - offset_3d_model;
 end
-
-% Define the controls 
-ControlsFieldNames = {...
-'model'             'label'  'color'             'rot_offset_deg'  'rot_point'                                'rot_vect'  };
-Controls = {
-'FP_Right.stl',     'FP_R',   0.3*[0.8, 0.8, 1],  0,                [5719,  996.6, 600]-offset_3d_model,      [0,  1, 0];
-'FP_Left.stl',      'FP_L',   0.3*[0.8, 0.8, 1],  0,                [5719, -996.6, 600]-offset_3d_model,      [0,  1, 0];
-'LE_Left.stl',      'LE_L',   0.3*[0.8, 0.8, 1],  0,                [9267, -2493, 380.2]-offset_3d_model,     [0.7849, -0.6197, 0];
-'LE_right.stl',     'LE_R',   0.3*[0.8, 0.8, 1],  0,                [9267, +2493, 380.2]-offset_3d_model,     [-0.7849, -0.7197, 0];
-'Rudder.stl',       'RUD',    0.3*[0.8, 0.8, 1],  0,                [12930, 0, 1387]-offset_3d_model,         [0, 0, -1];
-'Elevon_Left.stl',  'FLAP_L', 0.3*[0.8, 0.8, 1],  0,                [11260, -860.9, 368.3]-offset_3d_model,   [+0.0034, 0.9999, 0];
-'Elevon_Right.stl', 'FLAP_R', 0.3*[0.8, 0.8, 1],  0,                [11260, +860.9, 368.3]-offset_3d_model,   [-0.0034, 0.9999, 0];
-};
-
+% Controls parts
 for i = 1:size(Controls, 1)
     for j = 1:size(Controls, 2)
         Model3D.Control(i).(ControlsFieldNames{j}) = Controls{i, j};
@@ -47,7 +46,7 @@ for i = 1:size(Controls, 1)
     Model3D.Control(i).stl_data.vertices = Model3D.Control(i).stl_data.vertices - offset_3d_model;
 end
 
-% Save mat file
+%% Save mat file
 save(MatFileName, 'Model3D');
 
 %% Check the results
@@ -56,34 +55,15 @@ AC_DIMENSION = max(max(sqrt(sum(Model3D.Aircraft(1).stl_data.vertices.^2,2))));
 for i=1:length(Model3D.Control)
     AC_DIMENSION = max(AC_DIMENSION,max(max(sqrt(sum(Model3D.Control(i).stl_data.vertices.^2,2)))));
 end
-
-iSaveMovie = 0;
+% Define the figure properties
 AX = axes('position',[0.0 0.0 1 1]);
 axis off
 scrsz = get(0,'ScreenSize');
-set(gcf,'Position',[scrsz(3)/40 scrsz(4)/12 scrsz(3)/2*1.0 scrsz(3)/2.2*1.0]*(1-0.0*iSaveMovie),'Visible','on');
+set(gcf,'Position',[scrsz(3)/40 scrsz(4)/12 scrsz(3)/2*1.0 scrsz(3)/2.2*1.0],'Visible','on');
 set(AX,'color','none');
 axis('equal')
 hold on;
 cameratoolbar('Show')
-% Initializate rotations handles
-% -------------------------------------------------------------------------
-% Aircraft
-AV_hg(1)      = hgtransform;
-% % Controls
-CONT_hg       = zeros(1,length(Model3D.Control));
-for i=1:length(Model3D.Control)
-    CONT_hg(i) = hgtransform('Parent',AV_hg(1),'tag',Model3D.Control(i).label);
-end
-% Circles around the aircraft
-euler_hgt(1)  = hgtransform('Parent',AX,'tag','OriginAxes');
-euler_hgt(2)  = hgtransform('Parent',euler_hgt(1),'tag','roll_disc');
-euler_hgt(3)  = hgtransform('Parent',euler_hgt(1),'tag','pitch_disc');
-euler_hgt(4)  = hgtransform('Parent',euler_hgt(1),'tag','heading_disc');
-euler_hgt(5)  = hgtransform('Parent',euler_hgt(2),'tag','roll_line');
-euler_hgt(6)  = hgtransform('Parent',euler_hgt(3),'tag','pitch_line');
-euler_hgt(7)  = hgtransform('Parent',euler_hgt(4),'tag','heading_line');
-
 % Plot objects
 % -------------------------------------------------------------------------
 % Plot airframe
@@ -91,10 +71,7 @@ for i = 1:length(Model3D.Aircraft)
     AV = patch(Model3D.Aircraft(i).stl_data,  'FaceColor',        Model3D.Aircraft(i).color, ...
         'EdgeColor',        'none',        ...
         'FaceLighting',     'gouraud',     ...
-        'AmbientStrength',   0.15,         ...
-        'LineSmoothing',    'on',...
-        'Parent',            AV_hg(1), ...
-        'LineSmoothing', 'on');
+        'AmbientStrength',   0.15);
 end
 CONT(length(Model3D.Control))=0;
 % Plot controls
@@ -102,15 +79,13 @@ for i=1:length(Model3D.Control)
     CONT(i) = patch(Model3D.Control(i).stl_data,  'FaceColor',        Model3D.Control(i).color, ...
         'EdgeColor',        'none',        ...
         'FaceLighting',     'gouraud',     ...
-        'AmbientStrength',  0.15,          ...
-        'LineSmoothing',    'on',...
-        'Parent',           CONT_hg(i));
+        'AmbientStrength',  0.15);
     % Plot the rotation point and the rotation axis of each control
     % (double-check correct implementation and rotation direction of each
     % control surface)
     p = Model3D.Control(i).rot_point;
     vect = Model3D.Control(i).rot_vect;
-%     plot3(p(1)+[0, AC_DIMENSION*vect(1)/2], p(2)+[0, AC_DIMENSION*vect(2)/2], p(3)+[0, AC_DIMENSION*vect(3)/2], 'b-o', 'MarkerSize', 10, 'LineWidth', 2);
+    plot3(p(1)+[0, AC_DIMENSION*vect(1)/2], p(2)+[0, AC_DIMENSION*vect(2)/2], p(3)+[0, AC_DIMENSION*vect(3)/2], 'b-o', 'MarkerSize', 10, 'LineWidth', 2);
 end
 % Fixing the axes scaling and setting a nice view angle
 axis('equal');

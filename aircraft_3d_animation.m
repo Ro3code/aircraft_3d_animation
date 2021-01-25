@@ -41,10 +41,10 @@ function [] = aircraft_3d_animation(...
 %                                      * model: stl file (string)
 %                                      * label: string
 %                                      * color: surface color
-%                                      * rot_offset_deg: 
-%                                      * rot_point: 
-%                                      * rot_vect: 
-%                                      * max_deflection: 
+%                                      * rot_offset_deg: rotation offset (deg)
+%                                      * rot_point: rotation point coordinates 
+%                                      * rot_vect: rotation vector
+%                                      * max_deflection: maximum deflection angles [min, max]
 %     heading_deg:              Heading angle [deg]
 %     pitch_deg:                Pitch angle [deg]
 %     bank_deg:                 Roll angle [deg]
