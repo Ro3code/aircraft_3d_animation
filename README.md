@@ -27,6 +27,21 @@ Typical usage of `matlab2tikz` consists of converting your MATLAB plot to a TikZ
 matlab2tikz('myfile.tex');
 ```
 
+Using an Ad-Hoc Aircraft 3D Model
+=================================
+
+The first thing you will need to do is to look for is a 3D model in *.stl format (STereoLithography) that best represents the external geometry of the plane or air vehicle.
+
+There is a wide variety of web pages where you can find an infinity of 3D models to download for free. I recommend you to have a look at the following websites where you will surely find the 3D model you are looking for:
+
+* 
+*
+
+You can use any 3D editing tool to split the model's moveable flight control surfaces, I personally like MeshLab, since it's easy to use, and above all, it's completely free.
+
+For further information about how to implement your own 3D model, have a look at the "import_stl_model" folder.
+
+
 More information
 ================
 
