@@ -1,4 +1,6 @@
-% Example script to visualize the aircraft simulation data
+%% Example script to visualize the aircraft simulation data
+% Add the path of the aircraft_3d_animation function
+addpath('../');
 % path of the *.mat file containing the 3d model information
 model_info_file = '../3d_models/saab_gripen_3d_model.mat';
 % Load the simulation data
@@ -13,8 +15,8 @@ isave_movie = 0;
 movie_file_name = '';
 
 % -------------------------------------------------------------------------
-% The frame sample time shall be higher than 0.02 to be able to update the
-% figure (CPU/GPU constraints)
+% The frame sample time shall be higher than 0.02 seconds to be able to 
+% update the figure (CPU/GPU constraints)
 frame_sample_time = max(0.02, tout(2)-tout(1));
 % Resample the time vector to modify the reproduction speed
 t_new   = tout(1):frame_sample_time*(speedx):tout(end);
@@ -49,20 +51,22 @@ dfp    = 0.5 * (act(:, 1) + act(:, 2));
 % Control array assignation
 % (modify the order according to your particular 3D model)
 controls_deflection_deg = [0.5*(df1(:)+df2(:)), 0.5*(df3(:)+df4(:)), le(:), le(:), dr(:), dfp(:), dfp(:)];
-%% run animate_3d_model
+
+%% Run aircraft_3d_animation function
+% -------------------------------------------------------------------------
 aircraft_3d_animation(model_info_file,...
     heading_deg, ...            Heading angle [deg]
     pitch_deg, ...              Pitch angle [deg]
     bank_deg, ...               Roll angle [deg]
-    roll_command, ...           Roll stick command [-1,+1]
-    pitch_command, ...          Pitch stick command [-1,+1]
+    roll_command, ...           Roll  stick command [-1,+1] [-1 -> left,            +1 -> right]
+    pitch_command, ...          Pitch stick command [-1,+1] [-1 -> full-back stick, +1 -> full-fwd stick]
     angle_of_attack_deg, ...    AoA [deg]
     angle_of_sideslip_deg, ...  AoS [deg]
     fligh_path_angle_deg, ...   Flight path angle [deg]
     mach, ...                   Mach number
     altitude_ft, ...            Altitude [ft]
     nz_g,  ...                  Vertical load factor [g]
-    controls_deflection_deg, ...Flight control deflection (each control is a column)
+    controls_deflection_deg, ...Flight control deflection (each column is a control surface)
     frame_sample_time, ...      Sample time [sec]
     speedx, ...                 Reproduction speed
     isave_movie, ...            Save the movie? 0-1
