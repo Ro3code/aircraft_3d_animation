@@ -6,6 +6,9 @@ A lightweight MATLAB(R) function to easily visualize flight test data recordings
 
 Features
 ============
+* 3D aircraft model with moveable flight control surfaces 
+* Flight control surfaces saturation monitors (color highlighting of saturated surfaces) 
+* Departure from controlled flight monitor (red color highlighting) 
 * Selectable maneuvre reproduction speed 
 * Export maneuvre animation to an MP4 video file
 * Highly customizable for other aircraft 3D model
