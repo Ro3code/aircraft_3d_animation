@@ -1,4 +1,4 @@
-![alt text](https://im.ezgif.com/tmp/ezgif-1-a37470a31088.gif)
+![alt text](https://s2.gifyu.com/images/10a9601110175b743.gif)
 # Aircraft 3D Animation Function
 ![GitHub](https://img.shields.io/github/license/Ro3code/aircraft_3d_animation) ![GitHub all releases](https://img.shields.io/github/downloads/Ro3code/aircraft_3d_animation/total) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) ![GitHub top language](https://img.shields.io/github/languages/top/Ro3code/aircraft_3d_animation)
 
