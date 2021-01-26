@@ -24,7 +24,7 @@ Installation
 Usage
 =====
 
-Just feed your flight test or simulation data to the function as follows:
+Just feed your flight test or simulation data to the `aircraft_3d_animation` function as follows:
 
 ```matlab
 %% Example script to visualize the aircraft simulation data
@@ -109,8 +109,8 @@ The first thing you will need to do is to look for is a 3D model in *.stl format
 
 There is a wide variety of web pages where you can find an infinity of 3D models to download for free. I recommend you to have a look at the following websites where you will surely find the 3D model you are looking for:
 
-* 
-*
+* [GrabCad](https://grabcad.com/)
+* [Clara.io](https://clara.io/library)
 
 You can use any 3D editing tool to split the model's moveable flight control surfaces, I personally like MeshLab, since it's easy to use, and above all, it's completely free.
 
