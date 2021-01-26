@@ -114,7 +114,7 @@ There is a wide variety of web pages where you can find an infinity of 3D models
 
 As `aircraft_3d_animation` function allows animating the moving parts of the aircraft, first, you will have to separate the 3D model into two sets of parts/submodels: the rigid parts that are solidly attached to the main body (fuselage, wings, cockpit, etc.), and set of parts that can move and/or rotate with respect to the main body (flight control surfaces, landing gear, etc.). You can use any 3D editing tool to split the model's moveable flight control surfaces, I personally like [MeshLab](https://www.meshlab.net/), since it's easy to use, and above all, it's completely free.
 
-For further information about how to implement your own 3D model, have a look at the "import_stl_model" folder.
+For further information about how to implement your own 3D model, have a look at the [import_stl_model](https://github.com/Ro3code/aircraft_3d_animation/tree/main/import_stl_model) folder.
 
 More information
 ================
