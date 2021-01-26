@@ -102,8 +102,8 @@ aircraft_3d_animation(model_info_file,...
     movie_file_name);           % Movie file name
 ```
 
-Using an Ad-Hoc Aircraft 3D Model
-=================================
+How to Use Other Aircraft 3D Models
+===================================
 
 The first thing you will need to do is to look for is a 3D model in *.stl format (STereoLithography) that best represents the external geometry of the plane or air vehicle.
 
