@@ -1,4 +1,4 @@
-![alt text](https://im2.ezgif.com/tmp/ezgif-2-b9081d1fdd47.gif)
+![alt text](https://github.com/Ro3code/aircraft_3d_animation/departure_animation.gif)
 # Aircraft 3D Animation Function
 ![GitHub](https://img.shields.io/github/license/Ro3code/aircraft_3d_animation) ![GitHub all releases](https://img.shields.io/github/downloads/Ro3code/aircraft_3d_animation/total) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) ![GitHub top language](https://img.shields.io/github/languages/top/Ro3code/aircraft_3d_animation)
 
