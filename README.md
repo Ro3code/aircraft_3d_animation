@@ -14,17 +14,17 @@ Installation
 ============
 
 1. Extract the ZIP file (or clone the git repository) somewhere you can easily reach it. 
-2. Add the `src/` folder to your path in MATLAB/Octave: e.g. 
+2. Add the `src/` folder to your path in MATLAB: e.g. 
     - using the "Set Path" dialog in MATLAB, or 
     - by running the `addpath` function from your command window or `startup` script.
     
 Usage
 =====
 
-Typical usage of `matlab2tikz` consists of converting your MATLAB plot to a TikZ/LaTeX file and then running a LaTeX compiler to produce your document.
+Just feed your flight test or simulation data to the function as follows:
 
 ```matlab
-matlab2tikz('myfile.tex');
+
 ```
 
 Using an Ad-Hoc Aircraft 3D Model
