@@ -119,5 +119,5 @@ For further information about how to implement your own 3D model, have a look at
 More information
 ================
 
-* For more information about `aircraft_3d_animation`, have a look at this post on [Medium](https://github.com/matlab2tikz/matlab2tikz). If you are a good MATLAB® programmer, you are always welcome to help improving `aircraft_3d_animation` function!
+* For more information about `aircraft_3d_animation`, have a look at this post on [Medium](https://medium.com/codestory/3d-animations-made-simple-with-matlab-visualizing-flight-test-data-and-simulation-results-ed399cdcc711). If you are a good MATLAB® programmer, you are always welcome to help improving `aircraft_3d_animation` function!
 * If you experience bugs or would like to request a feature, please visit our [issue tracker](https://github.com/Ro3code/aircraft_3d_animation/issues). 
