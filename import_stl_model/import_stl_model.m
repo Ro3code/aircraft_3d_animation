@@ -64,6 +64,14 @@ set(AX,'color','none');
 axis('equal')
 hold on;
 cameratoolbar('Show')
+% Circles around the aircraft transformation group handles
+euler_hgt(1)  = hgtransform('Parent',           AX, 'tag', 'OriginAxes');
+euler_hgt(2)  = hgtransform('Parent', euler_hgt(1), 'tag', 'roll_disc');
+euler_hgt(3)  = hgtransform('Parent', euler_hgt(1), 'tag', 'pitch_disc');
+euler_hgt(4)  = hgtransform('Parent', euler_hgt(1), 'tag', 'heading_disc');
+euler_hgt(5)  = hgtransform('Parent', euler_hgt(2), 'tag', 'roll_line');
+euler_hgt(6)  = hgtransform('Parent', euler_hgt(3), 'tag', 'pitch_line');
+euler_hgt(7)  = hgtransform('Parent', euler_hgt(4), 'tag', 'heading_line');
 % Plot objects
 % -------------------------------------------------------------------------
 % Plot airframe
