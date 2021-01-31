@@ -289,7 +289,7 @@ for i=1:length(heading_deg)
     % controls_deflection_deg
     for j=1:length(Model3D.Control)
         M1 = makehgtform('translate', -Model3D.Control(j).rot_point);   % Heading
-        M2 = makehgtform('axisrotate', Model3D.Control(j).rot_vect, (Model3D.Control(j).rot_offset_deg + controls_deflection_deg(i, j)) * pi / 180);  % Pitch
+        M2 = makehgtform('axisrotate', Model3D.Control(j).rot_vect, controls_deflection_deg(i, j)) * pi / 180);  % Pitch
         M3 = makehgtform('translate', Model3D.Control(j).rot_point);  % bank_deg
         set(CONT_hg(j), 'Matrix', M3 * M2 * M1);
     end
