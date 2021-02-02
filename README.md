@@ -1,6 +1,6 @@
 ![alt text](https://github.com/Ro3code/aircraft_3d_animation/blob/main/departure_animation.gif?raw=true)
 # Aircraft 3D Animation Function
-![GitHub](https://img.shields.io/github/license/Ro3code/aircraft_3d_animation) ![GitHub all releases](https://img.shields.io/github/downloads/Ro3code/aircraft_3d_animation/total) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) ![GitHub top language](https://img.shields.io/github/languages/top/Ro3code/aircraft_3d_animation) [![View Aircraft 3D Animation on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://es.mathworks.com/matlabcentral/fileexchange/86453-aircraft-3d-animation)
+![GitHub](https://img.shields.io/github/license/Ro3code/aircraft_3d_animation) [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) ![GitHub top language](https://img.shields.io/github/languages/top/Ro3code/aircraft_3d_animation) [![View Aircraft 3D Animation on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://es.mathworks.com/matlabcentral/fileexchange/86453-aircraft-3d-animation)
 
 A lightweight MATLAB® function to easily visualize flight test data recordings and outputs of nonlinear flight dynamics simulators. To download the official releases and rate `aircraft_3d_animation` function, please visit its page on [FileExchange](https://es.mathworks.com/matlabcentral/fileexchange/86453-aircraft-3d-animation).
 
