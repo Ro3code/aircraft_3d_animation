@@ -1,12 +1,12 @@
 %% Example script to visualize the aircraft simulation data
 % Add the path of the aircraft_3d_animation function
-addpath('../');
+addpath('../src/');
 % path of the *.mat file containing the 3d model information
 model_info_file = '../3d_models/saab_gripen_3d_model.mat';
 % Load the simulation data
-load('scissors_maneuver.mat')
+% load('scissors_maneuver.mat')
 % load('breakaway_maneuver.mat')
-% load('split_s_maneuver.mat')
+load('split_s_maneuver.mat')
 % define the reproduction speed factor
 speedx = 1; 
 % Do you want to save the animation in a mp4 file? (0.No, 1.Yes)
@@ -50,7 +50,7 @@ df4    = act(:, 3);
 dfp    = 0.5 * (act(:, 1) + act(:, 2));
 % Control array assignation
 % (modify the order according to your particular 3D model)
-controls_deflection_deg = [0.5*(df1(:)+df2(:)), 0.5*(df3(:)+df4(:)), le(:), le(:), dr(:), dfp(:), dfp(:)];
+controls_deflection_deg = [dfp(:), dfp(:), le(:), le(:), dr(:), 0.5*(df1(:)+df2(:)), 0.5*(df3(:)+df4(:))];
 
 %% Run aircraft_3d_animation function
 % -------------------------------------------------------------------------

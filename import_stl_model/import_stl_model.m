@@ -5,7 +5,7 @@ close all;
 % https://es.mathworks.com/matlabcentral/fileexchange/51200-stltools
 addpath('./stlTools');
 % Set the name of the mat file containing all the info of the 3D model
-MatFileName = 'SAAB_GRIPEN_MULTI_BODY.mat';
+MatFileName = '../3d_models/saab_gripen_3d_model.mat';
 % Define the list of parts which will be part of the rigid aircraft body
 rigid_body_list   = {     'Body.stl',   'AB_Left.stl',  'AB_Right.stl', 'Canopy_Front.stl', 'Canopy_Rear.stl'};
 % Define the color of each part
