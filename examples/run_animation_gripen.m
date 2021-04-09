@@ -6,7 +6,8 @@ model_info_file = '../3d_models/saab_gripen_3d_model.mat';
 % Load the simulation data
 % load('scissors_maneuver.mat')
 % load('breakaway_maneuver.mat')
-load('split_s_maneuver.mat')
+% load('split_s_maneuver.mat')
+load('departure.mat')
 % define the reproduction speed factor
 speedx = 1; 
 % Do you want to save the animation in a mp4 file? (0.No, 1.Yes)

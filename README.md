@@ -6,7 +6,7 @@ A lightweight MATLAB® function to easily visualize flight test data recordings 
 
 Features
 ============
-* 3D aircraft model with moveable flight control surfaces 
+* 3D aircraft models with moveable flight control surfaces: the SAAB Gripen and the North American X-15 
 * Flight control surfaces saturation monitors (color highlighting of saturated surfaces) 
 * Departure from controlled flight monitor (red color highlighting) 
 * Selectable maneuver reproduction speed 
@@ -31,11 +31,12 @@ Just feed your flight test or simulation data to the `aircraft_3d_animation` fun
 % Add the path of the aircraft_3d_animation function
 addpath('../src/');
 % path of the *.mat file containing the 3d model information
-model_info_file = 'saab_gripen_3d_model.mat';
+model_info_file = '../3d_models/saab_gripen_3d_model.mat';
 % Load the simulation data
-load('scissors_maneuver.mat')
+% load('scissors_maneuver.mat')
 % load('breakaway_maneuver.mat')
 % load('split_s_maneuver.mat')
+load('departure.mat')
 % define the reproduction speed factor
 speedx = 1; 
 % Do you want to save the animation in a mp4 file? (0.No, 1.Yes)
@@ -79,7 +80,7 @@ df4    = act(:, 3);
 dfp    = 0.5 * (act(:, 1) + act(:, 2));
 % Control array assignation
 % (modify the order according to your particular 3D model)
-controls_deflection_deg = [0.5*(df1(:)+df2(:)), 0.5*(df3(:)+df4(:)), le(:), le(:), dr(:), dfp(:), dfp(:)];
+controls_deflection_deg = [dfp(:), dfp(:), le(:), le(:), dr(:), 0.5*(df1(:)+df2(:)), 0.5*(df3(:)+df4(:))];
 
 %% Run aircraft_3d_animation function
 % -------------------------------------------------------------------------
@@ -111,6 +112,7 @@ There is a wide variety of web pages where you can find an infinity of 3D models
 
 * [GrabCad](https://grabcad.com/)
 * [Clara.io](https://clara.io/library)
+* [Sketchfab](https://sketchfab.com/feed)
 
 As `aircraft_3d_animation` function allows animating the moving parts of the aircraft, first, you will have to separate the 3D model into two sets of parts/submodels: the rigid parts that are solidly attached to the main body (fuselage, wings, cockpit, etc.), and set of parts that can move and/or rotate with respect to the main body (flight control surfaces, landing gear, etc.). You can use any 3D editing tool to split the model's moveable flight control surfaces, I personally like [MeshLab](https://www.meshlab.net/), since it's easy to use, and above all, it's completely free.
 
