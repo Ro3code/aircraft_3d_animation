@@ -7,13 +7,14 @@ model_info_file = '../3d_models/x15_3d_model.mat';
 % load('scissors_maneuver.mat')
 % load('breakaway_maneuver.mat')
 % load('split_s_maneuver.mat')
-load('departure.mat')
+% load('departure.mat')
+load('departure2.mat')
 % define the reproduction speed factor
 speedx = 1; 
 % Do you want to save the animation in a mp4 file? (0.No, 1.Yes)
-isave_movie = 0;
+isave_movie = 1;
 % Movie file name
-movie_file_name = '';
+movie_file_name = 'departure2.mp4';
 
 % -------------------------------------------------------------------------
 % The frame sample time shall be higher than 0.02 seconds to be able to 
