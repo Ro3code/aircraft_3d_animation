@@ -355,7 +355,7 @@ for i=1:length(heading_deg)
     idx_sat = controls_deflection_deg(i, :) >= max_deflection(2, :)*0.99 | controls_deflection_deg(i, :) <= max_deflection(1, :)*0.99;
     idx_nosat = ~idx_sat;
     set(CONT(idx_sat), 'FaceColor', 'y');
-    set(CONT(idx_nosat), 'FaceColor', Model3D.Control(1).color);
+    set(CONT(idx_nosat), {'FaceColor'}, {Model3D.Control(idx_nosat).color}');
     
     % Stick Position
     STICK_X     = [0 -roll_command(i)];
