@@ -109,7 +109,7 @@ cameratoolbar('Show')
 % Aircraft transformation group handle
 AV_hg         = hgtransform;
 % controls_deflection_deg transformation group handles
-CONT_hg       = zeros(1,length(Model3D.Control));
+CONT_hg       = gobjects(1,length(Model3D.Control));
 for i=1:length(Model3D.Control)
     CONT_hg(i) = hgtransform('Parent', AV_hg, 'tag', Model3D.Control(i).label);
 end
@@ -124,7 +124,7 @@ euler_hgt(7)  = hgtransform('Parent', euler_hgt(4), 'tag', 'heading_line');
 % Plot objects
 % -------------------------------------------------------------------------
 % Plot airframe
-AV = zeros(1, length(Model3D.Aircraft));
+AV = gobjects(1, length(Model3D.Aircraft));
 for i = 1:length(Model3D.Aircraft)
     AV(i) = patch(Model3D.Aircraft(i).stl_data,  ...
         'FaceColor',        Model3D.Aircraft(i).color, ...
@@ -135,7 +135,7 @@ for i = 1:length(Model3D.Aircraft)
         'Parent',            AV_hg, ...
         'LineSmoothing', 'on');
 end
-CONT = zeros(1, (length(Model3D.Control)));
+CONT = gobjects(1, (length(Model3D.Control)));
 % Plot controls_deflection_deg
 for i=1:length(Model3D.Control)
     CONT(i) = patch(Model3D.Control(i).stl_data,  ...
@@ -355,7 +355,7 @@ for i=1:length(heading_deg)
     idx_sat = controls_deflection_deg(i, :) >= max_deflection(2, :)*0.99 | controls_deflection_deg(i, :) <= max_deflection(1, :)*0.99;
     idx_nosat = ~idx_sat;
     set(CONT(idx_sat), 'FaceColor', 'y');
-    set(CONT(idx_nosat), 'FaceColor', Model3D.Control(1).color);
+    set(CONT(idx_nosat), {'FaceColor'}, {Model3D.Control(idx_nosat).color}');
     
     % Stick Position
     STICK_X     = [0 -roll_command(i)];
